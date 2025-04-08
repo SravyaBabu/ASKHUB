@@ -1,0 +1,41 @@
+{% extends 'User/common.html' %}
+
+{% block content %}
+<div class="container mt-4" style="margin-bottom:180px ;">
+    <div class="row">
+        <!-- Profile Section -->
+        <div class="col-md-4">
+            <div class="card shadow-sm">
+                <div class="card-body text-center">
+                    <img src="../static/media/{{ user.photo }}" class="rounded-circle mb-3" style="width: 150px; height: 150px; object-fit: cover;" alt="Profile Image">
+                    <h4>{{ user.firstname }} {{ user.lastname }}</h4>
+                    <p class="text-muted">{{ user.username }}</p>
+                    <p class="text-muted">{{ user.bio }}</p>
+                    <a href="/edit-profile" class="btn btn-outline-primary btn-sm mt-2">Edit Profile</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Questions Section -->
+        <div class="col-md-8">
+            <h4 class="mb-3">Questions You've Asked</h4>
+            {% if question %}
+                {% for i in question %}
+                    <div class="card mb-3 shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.title }}</h5>
+                            <p class="card-text">{{ i.body|truncatewords:25 }}</p>
+                            {% if i.image %}
+                                <img src="../static/media/{{ i.image }}" class="img-fluid rounded mb-2" style="max-height: 200px;" alt="Question Image">
+                            {% endif %}
+                            <p class="text-muted mb-0">Posted on {{ i.date|date:"F d, Y H:i" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p class="text-muted">You haven't posted any questions yet.</p>
+            {% endif %}
+        </div>
+    </div>
+</div>
+{% endblock %}

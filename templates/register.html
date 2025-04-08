@@ -1,0 +1,95 @@
+{% extends 'common.html' %}
+{% block content %}
+{% load static %}
+
+<style>
+.hero-section {
+    background-image: url("{% static 'assets/images/pensive-young-male-with-curly-hair-holds-chin-looks-thoughtfully-aside.jpg' %}");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 90vh;
+    color: white;
+    text-shadow: 1px 1px 2px black;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding-right: 80px;
+}
+.hero-content {
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+}
+</style>
+
+<section class="hero-section">
+    <div class="hero-content">
+        <h1 class="mb-4">Register</h1>
+        <form class="form" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <div class="form-group">
+                <label for="photo">Upload Photo*</label>
+                <input id="photo" type="file" name="photo" class="form-control" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="firstname">First Name*</label>
+                <input id="firstname" type="text" name="firstname" class="form-control" placeholder="First Name" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="lastname">Last Name*</label>
+                <input id="lastname" type="text" name="lastname" class="form-control" placeholder="Last Name" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="username">Email Address*</label>
+                <input id="username" type="email" name="username" class="form-control" placeholder="Email address" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="password">Password*</label>
+                <input id="password" type="password" name="password" class="form-control" placeholder="Password" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="mobile">Phone Number*</label>
+                <input id="mobile" type="tel" name="mobile" class="form-control" placeholder="Phone" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="dob">DOB*</label>
+                <input id="dob" type="date" name="dob" class="form-control" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="address">Address</label>
+                <input id="address" type="text" name="address" class="form-control" placeholder="Address" required />
+            </div>
+
+            <div class="form-group mt-3">
+                <label for="bio">Bio</label>
+                <input id="bio" type="text" name="bio" class="form-control" placeholder="Brief About You." required />
+            </div>
+
+            <div class="form-group form-check mt-3">
+                <input id="checkbox" type="checkbox" name="checkbox" class="form-check-input" />
+                <label for="checkbox" class="form-check-label">I agree to the <a href="/termsandcondi" class="text-light">Terms of User</a></label>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-primary w-100">Create a new account</button>
+            </div>
+
+            <div class="text-center mt-3">
+                <span>Already have an account?</span>
+                <a href="/login" class="text-light">Login</a>
+            </div>
+        </form>
+    </div>
+</section>
+
+{% endblock %}

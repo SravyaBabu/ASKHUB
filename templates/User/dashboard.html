@@ -1,0 +1,49 @@
+{% extends 'User/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2>All Questions</h2>
+        <a href="/question" class="btn btn-dark">Ask a Question</a>
+    </div>
+
+    {% if question %}
+   
+
+        <div class="row">
+            {% for i in question %}
+            <a href="/answerquestion?id={{i.id}}" style="text-decoration: none;">
+                <div class="col-md-12 mb-3">
+                    <div class="card shadow-sm">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ i.title }}</h5>
+                              <p class="card-text text-muted">
+                                {{i.body}}
+                            </p>
+                            <p class="card-text text-muted">
+                                Posted by <strong>{{ i.user.firstname }}</strong> on 
+                                {{ i.date|date:"F d, Y H:i" }}
+                            </p>
+                            <img src="../static/media/{{i.image}}" alt="static/media/{{i.image}}" width="200" height="auto"  class="img-fluid rounded mb-3"  />
+<p class="text-muted mb-0 d-flex justify-content-between align-items-center">
+                <span>
+                 <strong>{{ i.countanswers }}</strong> 
+                   Answers
+                </span>
+             
+            </p>
+                            {% comment %} <a href="{% url 'question_detail' question.id %}" class="btn btn-outline-primary">View Details</a> {% endcomment %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </a>
+        </div>
+    
+    {% else %}
+        <p class="text-muted">No questions have been posted yet. Be the first to ask!</p>
+    {% endif %}
+</div>
+
+{% endblock %}

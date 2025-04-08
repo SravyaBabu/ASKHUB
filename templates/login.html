@@ -1,0 +1,59 @@
+{% extends 'common.html' %} {% block content %}
+{% load static %}
+
+<style>
+    .hero-section {
+        background-image: url("{% static 'assets/images/pensive-young-male-with-curly-hair-holds-chin-looks-thoughtfully-aside.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 90vh;
+        color: white;
+        text-shadow: 1px 1px 2px black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+  .hero-content{
+    margin-left: 900px;
+    background: rgba(0, 0, 0, 0.6);
+    padding: 30px;
+    border-radius: 10px;
+    width: 400px;
+  }
+    </style>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Login</h1>
+            <form class="form mt-6" method="POST">
+                        {% csrf_token %}
+                        <div class="form-group">
+                            <label for="username">Email address*</label>
+                            <input id="username" type="email" name="username" class="form-control w-full mt-3 border border-line px-4 h-[50px] rounded-lg" placeholder="Email address*" required />
+                        </div>
+                        <div class="form-group mt-6">
+                            <label for="password">Password*</label>
+                            <input id="password" type="password" name="password" class="form-control w-full mt-3 border border-line px-4 h-[50px] rounded-lg" placeholder="Password*" required />
+                        </div>
+               
+                        <div class="block-button mt-6">
+                            <button class="button-main bg-dark w-full mt-3 border border-line px-4 h-[50px]" style="border-radius: 5px;color: white;">Login</button>
+                        </div>
+                        <div class="navigate flex items-center justify-center gap-2 mt-6">
+                            <span class="text-surface1">Not registered yet?</span>
+                            <a class="text-button hover:underline" href="/register">Sign Up</a>
+                        </div>
+                        <div class="block-button mt-6">
+                            <a href="/" class="button-main -border hover:bg-black w-full text-center">Go to Home</a>
+                        </div>
+                       
+                        
+                    </form>
+    </div>
+</section>
+
+
+
+{% endblock %}

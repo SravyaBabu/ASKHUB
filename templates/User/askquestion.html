@@ -1,0 +1,28 @@
+{% extends 'User/common.html' %}
+{% block content %}
+{% load static %}
+
+<div class="container" style="margin: 100px; margin-bottom: 150px;">
+<form enctype="multipart/form-data" method="POST">
+    {% csrf_token %}
+    
+    <div class="mb-3">
+        <label for="title" class="form-label">Post Title:</label>
+        <input id="title" type="text" name="title" class="form-control" placeholder="Enter your question title" required>
+    </div>
+
+    <div class="mb-3">
+        <label for="body" class="form-label">Body Text:</label>
+        <textarea id="body" name="body" class="form-control" rows="4" placeholder="Describe your question in detail" required></textarea>
+    </div>
+    
+    <div class="mb-3">
+        <label for="image" class="form-label">Upload Image (Optional):</label>
+        <input type="file" id="image" name="image" class="form-control">
+    </div>
+    
+    <button type="submit" class="btn btn-dark">Post Question</button>
+</form>
+</div>
+
+{% endblock %}

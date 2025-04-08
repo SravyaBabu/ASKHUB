@@ -1,0 +1,32 @@
+{% extends 'common.html' %} {% block content %}
+{% load static %}
+
+<style>
+    .hero-section {
+        background-image: url("{% static 'assets/images/pensive-young-male-with-curly-hair-holds-chin-looks-thoughtfully-aside.jpg' %}");
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center;
+        min-height: 90vh;
+        color: white;
+        text-shadow: 1px 1px 2px black;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+  .hero-content{
+    padding-left: 900px;
+  }
+    </style>
+    
+    <section class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to AskHub</h1>
+            <p>Where curiosity meets community — Ask questions and get answers</p>
+    </div>
+</section>
+
+
+
+{% endblock %}

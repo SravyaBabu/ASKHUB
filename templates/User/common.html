@@ -1,0 +1,68 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>AskHub | Home</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+</head>
+
+<body>
+
+    <!-- Message Alerts -->
+    {% for i in messages %}
+    <script>
+        alert("{{ i }}");
+    </script>
+    {% endfor %}
+
+    <header class="bg-dark py-2">
+        <div class="container d-flex justify-content-between align-items-center text-white">
+            <div class="left flex items-center gap-15 h-full max-[1600px]:gap-6">
+                <a href="/userdash" class="dropdown-item">
+                    <h1>ASKHUB</h1>
+                </a>
+            </div>
+
+            <div class="list_action flex items-center gap-5">
+
+                <div class=" relative max-sm:hidden">
+
+                    <button data-bs-toggle="dropdown">
+                        <img style="width: 40px; height: 40px;" src="../static/media/{{ user.photo }}" alt="Profile"
+                            class="user_avatar flex-shrink-0 w-9 h-9 rounded-circle" />
+                    </button>
+
+                    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                        <span class="text-title;"> Hey {{ user.firstname }}! </span>
+                        <li>
+                            <a href="/profile" class="dropdown-item">My Profile</a>
+                        </li>
+                        <li>
+                            <form action="{% url 'logout' %}" method="post" style="display: inline;">
+                                {% csrf_token %}
+                                <button type="submit" class="dropdown-item btn btn-link">Log Out</button>
+                            </form>
+                        </li>
+
+                    </ul>
+                </div>
+
+            </div>
+        </div>
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer class="bg-dark text-center text-muted py-3">
+        <p class="mb-0" style="color: white;">© 2025 AskHub. Built with Django & Bootstrap.</p>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+
+</html>
