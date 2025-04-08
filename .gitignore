@@ -1,0 +1,22 @@
+# .gitignore for Django projects
+
+# Virtual environment
+env/
+
+# Python
+*.pyc
+__pycache__/
+
+# Django
+db.sqlite3
+/static/
+/media/
+
+# IDEs
+.vscode/
+.idea/
+
+# Local configuration files
+.env
+*.log
+
